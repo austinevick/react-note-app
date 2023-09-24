@@ -1,0 +1,103 @@
+.note-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+    gap: 16px;
+}
+
+.note-btn button {
+    background: indigo;
+    color: white;
+    border: none;
+    padding: 8px;
+    width: 200px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+ul li {
+    width: 100%;
+    border: 1px solid #72757f;
+    list-style: none;
+    margin-bottom: 16px;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.note-wrapper li span {
+    font-size: 12px;
+    color: #72757f;
+    font-weight: 600;
+}
+
+.note-wrapper {
+    white-space: pre-wrap;
+}
+
+.addnote {
+    background: green;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border-radius: 8px;
+    height: 40px;
+    align-self: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.addnote:active {
+    background: grey;
+}
+
+.delete {
+    cursor: pointer;
+    background: #72757f;
+    border-radius: 50px;
+    padding: 8px;
+    opacity: 0.6;
+    color: black;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    background: lightgray;
+    padding: 8px;
+    border-radius: 8px;
+    justify-content: space-between;
+}
+
+.searchBar input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 600;
+    background: transparent;
+    margin-left: 4px;
+}
+
+.searchBar section {
+    display: flex;
+    align-items: center;
+}
