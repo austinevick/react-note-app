@@ -1,10 +1,11 @@
 import { Add } from '@mui/icons-material';
 import { useState } from 'react';
+import { useNoteContext } from '../../context/NoteContext';
 
-export const AddNote = ({ addNote }) => {
+export const AddNote = () => {
     const [noteText, setNoteText] = useState('');
     const characterLimit = 200;
-
+    const { addNote } = useNoteContext();
     return (
         <div className="addnewnote">
 
@@ -12,7 +13,6 @@ export const AddNote = ({ addNote }) => {
                 rows="10"
                 placeholder="Type to add a new note..."
                 value={noteText}
-
                 onChange={(event) => {
                     if (characterLimit === noteText.length) return;
                     setNoteText(event.target.value);

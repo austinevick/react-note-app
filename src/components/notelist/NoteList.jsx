@@ -4,10 +4,13 @@ import './noteList.css';
 import { AddNote } from '../addnote/AddNote';
 import { IconButton } from '@mui/material';
 import { useState } from 'react';
+import { useNoteContext } from '../../context/NoteContext';
 
-export default function NoteList({ notes, addNote, deleteNote, searchNote }) {
+export default function NoteList({ searchNote }) {
     const [searchValue, setSearchValue] = useState('');
+    const [searchText, setSearchText] = useState('');
 
+    const { notesList, deleteNote } = useNoteContext();
     return (
         <div className="noteList">
             <center>
@@ -17,7 +20,7 @@ export default function NoteList({ notes, addNote, deleteNote, searchNote }) {
                 <section>
                     <Search />
                     <input onChange={(e) => {
-                        searchNote(e.target.value);
+                        setSearchText(e.target.value);
                         setSearchValue(e.target.value);
                     }}
                         type="text"
@@ -32,24 +35,27 @@ export default function NoteList({ notes, addNote, deleteNote, searchNote }) {
                 ) : null}
             </div>
 
-            <AddNote addNote={addNote} />
+            <AddNote />
             <div className="note-wrapper">
-                <ul >{notes.map((e) => (
-                    <li >
-                        <p>{e.content}</p>
-                        <div style={{
-                            display: 'flex', alignItems: 'center',
-                            justifyContent: 'space-between'
-                        }}>
-                            <span>{e.date}</span>
-                            <IconButton>
-                                <DeleteForever
-                                    onClick={() => deleteNote(e.id)} />
+                <ul >{notesList.filter((e) => e.content
+                    .toLowerCase()
+                    .includes(searchText))
+                    .map((e) => (
+                        <li >
+                            <p>{e.content}</p>
+                            <div style={{
+                                display: 'flex', alignItems: 'center',
+                                justifyContent: 'space-between'
+                            }}>
+                                <span>{e.date}</span>
+                                <IconButton>
+                                    <DeleteForever
+                                        onClick={() => deleteNote(e.id)} />
 
-                            </IconButton>
-                        </div>
-                    </li>
-                ))}
+                                </IconButton>
+                            </div>
+                        </li>
+                    ))}
                 </ul>
 
             </div>
